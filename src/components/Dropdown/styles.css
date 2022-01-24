@@ -1,0 +1,88 @@
+.select {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 1);
+  width: 100%;
+  min-width: 10ch;
+  max-width: 20ch;
+  padding: 0.25em 0.5em 0.25em 1em;
+  font-size: 1.25rem;
+  border: 0;
+  cursor: pointer;
+  background-color: rgb(218, 201, 201);
+  background-image: linear-gradient(to top, #bba9a9, rgb(226, 214, 214) 33%);
+  font-size: medium;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-radius: 10px;
+  opacity: 70%;
+}
+.drop {
+  border-radius: 50px;
+}
+.select::after {
+  content: "";
+  width: 0.8em;
+  height: 0.5em;
+  background-color: var(--select-arrow);
+  clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+  cursor: pointer;
+  font-size: smaller;
+  
+}
+.buttonSearch {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 1);
+  border-radius: 10px;
+  opacity: 70%;
+  padding-right: 5px;
+  border: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  
+}
+.option.select:hover {
+  cursor: pointer;
+  
+}
+
+.searchItem {
+  box-shadow: 0 15px 25px rgb(77, 19, 9);
+  border-radius: 10px;
+  opacity: 80%;
+  padding-right: 20px;
+  width: 200px;
+  border: rgb(97, 75, 75);
+  font-weight: 100;
+  
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: #17282e;
+  }
+  .buttonSearch {
+    border-radius: 10px;
+    opacity: 70%;
+  }
+  .select {
+    width: 100%;
+    min-width: 10ch;
+    max-width: 20ch;
+    padding: 0.25em 0.5em 0.25em 1em;
+    font-size: 0.75rem;
+    cursor: pointer;
+    line-height: 1.1;
+    background-color: rgb(230, 212, 212);
+    background-image: linear-gradient(to top, #d1b7b7, #fff 33%);
+    font-size: small;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 10px;
+    opacity: 70%;
+  }
+}
+
+.drop {
+  margin: 50px 10px 20px 50px
+}
+
+.option {
+  border-radius: 10px;
+  opacity: 70%;
+  font-size: small;
+}
