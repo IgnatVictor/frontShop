@@ -3,7 +3,7 @@ import {  AppBar,  Toolbar,  IconButton,  Badge,  MenuItem,  Menu,Button,  Typog
 import axios from "axios";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
-import LoginIcon from '@mui/icons-material/Login';
+import {LoginIcon} from '@mui/icons-material/Login';
 import { CallMissedSharp, ShoppingCart } from "@material-ui/icons";
 import Modal from "@mui/material/Modal";
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
@@ -13,7 +13,7 @@ import useStyles from "./styles";
 import verifyIfTokenIsExpired from "../Services/UserCheck"
 import LogOut from "../Services/LogOut"
 import {Link} from 'react-router-dom'
-import LogoutIcon from '@mui/icons-material/Logout';
+import {LogoutIcon} from '@mui/icons-material/Logout';
 import { useHistory } from "react-router-dom"
 import { atom, useAtom } from "jotai";
 import { LOGGEDIN, MODALL } from "../atom/Atom";
