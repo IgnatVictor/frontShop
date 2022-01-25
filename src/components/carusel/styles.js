@@ -16,7 +16,7 @@ export default makeStyles((theme) => ({
   },
   carousell: {
     boxShadow: "10px -10px 10px 10px rgba(1, 1, 1, 1)",
-    background: "#d3e8e5",
+    background: "#f7f7f7",
   },
   image: {
       
