@@ -43,7 +43,7 @@ const App = () => {
     }
     const fetchProducts = async () => {
       const res = await fetch(
-        "http://localhost:8080/api/search?page=0&limit=8&search=" + search1
+        "https://webshopelectro.herokuapp.com/api/search?page=0&limit=8&search=" + search1
       );
       const data = await res.json();
       console.log(data);
@@ -59,7 +59,7 @@ const App = () => {
     }
     const fetchProducts = async () => {
       const res = await fetch(
-        "http://localhost:8080/api/category?page=0&limit=8&category=" + category
+        "https://webshopelectro.herokuapp.com/api/category?page=0&limit=8&category=" + category
       );
       const data = await res.json();
       setData(data);
@@ -88,7 +88,7 @@ const App = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       const res = await fetch(
-        "http://localhost:8080/api/products?page=0&limit=8"
+        "https://webshopelectro.herokuapp.com/api/products?page=0&limit=8"
       );
       const data = await res.json();
       setData(data);
@@ -100,7 +100,7 @@ const App = () => {
 
   const fetchProducts = async (page) => {
     const res = await fetch(
-      "http://localhost:8080/api/products?page=" + page + "&limit=8"
+      "https://webshopelectro.herokuapp.com/api/products?page=" + page + "&limit=8"
     );
     const data = await res.json();
     return data.content;
