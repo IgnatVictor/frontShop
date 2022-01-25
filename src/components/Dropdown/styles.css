@@ -44,11 +44,15 @@
 .searchItem {
   box-shadow: 0 15px 25px rgb(77, 19, 9);
   border-radius: 10px;
-  opacity: 80%;
-  padding-right: 20px;
+  opacity: 90%;
+  padding-left: 15px;
   width: 200px;
-  border: rgb(97, 75, 75);
+  border: 2px  solid rgb(117, 87, 87);
   font-weight: 100;
+  margin-right: 10px;
+
+  
+
   
 }
 

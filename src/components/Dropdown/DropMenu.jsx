@@ -12,8 +12,8 @@ function Dropdown(props) {
     e.preventDefault();
     setSearch(e.target.search.value);
   };
-  const selectCategory = (e) => setCategory(e.target.value);
-
+  const selectCategory = (e) => {setCategory(e.target.value);
+    e.target.blur();}
   return (
     <div className="drop">
       <br />
