@@ -122,7 +122,7 @@ function Navbar(props) {
               height="75px"
               className={classes.image}
             />
-            Electric Gaming
+            ElectricPlus
           </Typography>
          
           <div className={classes.grow} />
@@ -143,19 +143,20 @@ function Navbar(props) {
           { verifyIfTokenIsExpired() && <div className={classes.logoutButton}>
             <LogoutIcon onClick = {LogOut}/>
           </div> }
-          <Modal
+          <Modal 
             open={openRegistrer}
             onClose={() => {handleCloseModalRegister(); setAlert(false)}}
             aria-labelledby="modal-modalLogIn"
             aria-describedby="modal-descriere"
           >
-            <Box sx={style}>
+            <Box sx={style} className={classes.modal1}>
               <Box
                 style={{
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "center",
                   alignItems: "center",
+                  
                 }}
                 component="form"
                 sx={{ "&.MuiTextField-root": { m: 1, width: "25ch" } }}
@@ -206,7 +207,7 @@ function Navbar(props) {
                 ) : (
                   ""
                 )}
-              </Box>
+              </Box >
               <Stack
                 style={{
                   display: "flex",
@@ -233,7 +234,7 @@ function Navbar(props) {
             aria-labelledby="modal-modalLogIn"
             aria-describedby="modal-descriere"
           >
-            <Box sx={style}>
+            <Box sx={style} className={classes.modal1}>
               <Box
                 style={{
                   display: "flex",

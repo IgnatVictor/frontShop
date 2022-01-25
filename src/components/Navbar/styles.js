@@ -16,7 +16,17 @@ export default makeStyles((theme) => ({
     alignItems: 'center',
     display: 'flex',
     textDecoration: 'none',
+    fontFamily: "Impact",
+    fontSize:"25px",
+    color: "rgba(92,39,251,1)",
   },
+
+  modal1: {
+    borderRadius: "10%",
+    border:"1px solid rgba(92,39,251,1)",
+    opacity: "95%",
+  },
+
   image: {
     marginRight: '10px',
   },
