@@ -5,6 +5,7 @@ const drawerWidth = 0;
 export default makeStyles((theme) => ({
   appBar: {
     boxShadow: 'none',
+    position: "fixed",
     borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${drawerWidth}px)`,
@@ -16,15 +17,33 @@ export default makeStyles((theme) => ({
     alignItems: 'center',
     display: 'flex',
     textDecoration: 'none',
+    '&:hover': {
+      textDecoration: 'none',
+      color: "rgba(252,100,0,1)",
+    },
     fontFamily: "Impact",
-    fontSize:"25px",
-    color: "rgba(92,39,251,1)",
+    fontSize:"40px",
+    color: "rgba(252,100,0,1)",
+    "@media (max-width: 600px)": {
+      fontSize: "20px",
+      
+    }
   },
+  
 
-  modal1: {
+
+
+  modal1 : {
     borderRadius: "10%",
     border:"1px solid rgba(92,39,251,1)",
     opacity: "95%",
+    "& input": {
+        marginTop: "15px",
+        "@media (max-width: 600px)": {
+          marginTop: "10px",
+          
+        }
+    },
   },
 
   image: {
@@ -109,6 +128,18 @@ export default makeStyles((theme) => ({
   container: {
     display: 'flex',
     flexDirection: 'column'
+  },
+  buttonCancel : {
+    backgroundColor: "rgb(211,47,47)",
+    color:"white",
+  },
+  buttonRegister : {
+    backgroundColor: "rgb(25,118,210)",
+    color:"white",
+  },
+  modalTitle : {
+    textAlign: "center",
+    fontSize:"30px",
+    fontFamily:"impact"
   }
-
 }));

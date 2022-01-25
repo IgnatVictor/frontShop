@@ -22,20 +22,22 @@ function Product(props) {
 
   return (
     <Card className={classes.root}>
-      <CardMedia
+      <Link  className={classes.linkProduct} to={{
+            pathname:'/item', state : product
+          }} ><CardMedia
         className={classes.media}
         image={product.image}
         title={product.name}
-      />
+      /></Link>
       <CardContent>
         <div className={classes.cardContent}>
           <Typography className={classes.proba1} variant="h5" gutterBottom>
-            {product.name}+ " "
+            {product.name}+ "   "
           </Typography>
           <Typography variant="h5">{product.price + "$"}</Typography>
         </div>
 
-        <Link   to={{
+        <Link  className={classes.linkProduct} to={{
             pathname:'/item', state : product
           }} > <Typography
           variant="body2"
@@ -43,7 +45,7 @@ function Product(props) {
           className={classes.proba}
         >
           {" "}
-          {product.description}
+          {product.description} ...
         </Typography> </Link>
       </CardContent>
       <CardActions disableSpacing className={classes.cardActions}>

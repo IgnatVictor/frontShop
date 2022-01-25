@@ -64,6 +64,9 @@
     border-radius: 10px;
     opacity: 70%;
   }
+  .searchBar {
+    display:inline-block;
+  }
   .select {
     width: 100%;
     min-width: 10ch;
@@ -81,12 +84,16 @@
   }
 }
 
-.drop {
-  margin: 50px 10px 20px 50px
-}
+
 
 .option {
   border-radius: 10px;
   opacity: 70%;
   font-size: small;
+}
+
+
+.searchBar  {
+  margin: 50px 10px 20px 50px;
+  
 }

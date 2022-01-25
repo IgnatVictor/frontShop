@@ -148,8 +148,9 @@ function Navbar(props) {
             onClose={() => {handleCloseModalRegister(); setAlert(false)}}
             aria-labelledby="modal-modalLogIn"
             aria-describedby="modal-descriere"
-          >
-            <Box sx={style} className={classes.modal1}>
+          > 
+            <Box sx={style} className={classes.modal1}> 
+            <Typography className={classes.modalTitle} id="modal-modal-title" variant="h6" component="h2">Register</Typography>
               <Box
                 style={{
                   display: "flex",
@@ -208,6 +209,7 @@ function Navbar(props) {
                   ""
                 )}
               </Box >
+              
               <Stack
                 style={{
                   display: "flex",
@@ -218,10 +220,10 @@ function Navbar(props) {
                 spacing={2}
                 direction="row"
               >
-                <Button onClick={register} type="submit">
+                <Button className={classes.buttonRegister} onClick={register} variant="contained" type="submit" color="success">
                   Register
                 </Button>
-                <Button onClick={()=>{handleCloseModalRegister();setAlert(false)}} variant="text" color="error">
+                <Button className={classes.buttonCancel} onClick={()=>{handleCloseModalRegister();setAlert(false)}} variant="contained" color="error">
                   Cancel
                 </Button>
               </Stack>
@@ -235,6 +237,7 @@ function Navbar(props) {
             aria-describedby="modal-descriere"
           >
             <Box sx={style} className={classes.modal1}>
+            <Typography className={classes.modalTitle} id="modal-modal-title" variant="h6" component="h2">Login</Typography>
               <Box
                 style={{
                   display: "flex",
@@ -283,10 +286,10 @@ function Navbar(props) {
                 spacing={2}
                 direction="row"
               >
-                <Button onClick={login} type="submit">
+                <Button className={classes.buttonRegister} onClick={login} type="submit">
                   Log In
                 </Button>
-                <Button onClick={()=>{handleCloseModal();setAlert(false)}} variant="text" color="error">
+                <Button  className={classes.buttonCancel} onClick={()=>{handleCloseModal();setAlert(false)}} variant="text" color="error">
                   Cancel
                 </Button>
               </Stack>

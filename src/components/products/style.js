@@ -2,7 +2,11 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles(() => ({
   root: {
-    maxWidth: '70%',
+    width: '100%',
+    "@media (max-width: 600px)": {
+      width: "100%",
+      
+    }
     
   },
   proba: {
@@ -14,11 +18,17 @@ export default makeStyles(() => ({
     
   },
 
+  linkProduct : {
+    textDecoration: "none",
+  },
+  
+
   proba1: {
     overflow: "hidden",
     display: "-webkit-box",
     WebkitBoxOrient: "vertical",
     WebkitLineClamp:"1",
+    
   },
   media: {
     height: 100,

@@ -12,13 +12,16 @@ function Dropdown(props) {
     e.preventDefault();
     setSearch(e.target.search.value);
   };
-  const selectCategory = (e) => {setCategory(e.target.value);
-    e.target.blur();}
-  return (
-    <div className="drop">
-      <br />
+  const selectCategory = (e) => {
+    setCategory(e.target.value);
+    e.target.blur();
+  };
 
-      <select className="select" name="category" onChange={selectCategory}>
+  return (
+    <div> <br/><br/><br/>
+    <div className="searchBar form-row">
+      <div className="col col-lg-3 col-sm-12 mb-2">
+      <select className="form-select" name="category" onChange={selectCategory}>
         <option className="option" value="0" selected className="option1">
           Select Category
         </option>
@@ -41,11 +44,29 @@ function Dropdown(props) {
           Led
         </option>
       </select>
-      <br/><br/><br/>
-      <form onSubmit={submit} >
-        <input className="search" placeholder="Search..." name="search" className="searchItem"></input>
-        <button type="submit" onClick="" className="buttonSearch">Go</button>
+      </div>
+      <div className="col col-lg-4 col-sm-12 mb-1">
+      <form onSubmit={submit}>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Search..."
+            aria-label="Recipient's username"
+            aria-describedby="button-addon2"
+            name="search"
+          />
+          <button
+            className="btn btn-outline-secondary"
+            type="submit"
+            id="button-addon2"
+          >
+            Go
+          </button>
+        </div>
       </form>
+      </div>
+    </div>
     </div>
   );
 }
