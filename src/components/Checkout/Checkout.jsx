@@ -34,7 +34,7 @@ function Checkout(props) {
         <Typography variant="subtitle2"></Typography>
       </div>
       <br />
-      <Button component={Link} to="/" variant="outlined" type="button">
+      <Button component={Link} onClick={window.location.href = "https://webshopfront.herokuapp.com"} variant="outlined" type="button">
         Back to Home
       </Button>
     </>
