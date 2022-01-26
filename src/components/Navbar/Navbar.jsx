@@ -34,8 +34,8 @@ function Navbar(props) {
   const [alert, setAlert] = useState();
  
   
-  const url = "http://localhost:8080/api/auth/signin";
-  const urlRegister= "http://localhost:8080/api/auth/signup";
+  const url = "https://webshopelectro.herokuapp.com/api/auth/signin";
+  const urlRegister= "https://webshopelectro.herokuapp.com/api/auth/signup";
   let [count2, setCount2] =useState(0);
   const roles= ["ROLE_USER"];
   
