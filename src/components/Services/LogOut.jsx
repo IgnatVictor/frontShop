@@ -8,7 +8,7 @@ function LogOut() {
    localStorage.removeItem("id");
    localStorage.removeItem("quantity");
    
-   window.location.href = "https://webshopelectro.herokuapp.com/api/products?page=0&limit=8"
+   window.location.href = "https://webshopfront.herokuapp.com"
 }
 
 export default LogOut;
