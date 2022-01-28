@@ -25,6 +25,9 @@ function Checkout(props) {
   const [activeStep, setActiveStep] = useState(0);
   const classes = useStyles();
   const [shippingData, setShippingData] = useState({});
+  const deleteCart= ()=> {
+    localStorage.removeItem("quantity");
+  }
 
   const Confirmation = () => (
     <>
@@ -34,7 +37,7 @@ function Checkout(props) {
         <Typography variant="subtitle2"></Typography>
       </div>
       <br />
-      <Button component={Link} onClick={window.location.href = "https://webshopfront.herokuapp.com"} variant="outlined" type="button">
+      <Button component={Link} to="/" onClick= {deleteCart()} variant="outlined" type="button">
         Back to Home
       </Button>
     </>

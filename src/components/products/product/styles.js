@@ -14,4 +14,5 @@ export default makeStyles((theme) => ({
     height: 100,
     paddingTop: '100%', // 16:9
   },
+
 }));
