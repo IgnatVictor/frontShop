@@ -14,7 +14,7 @@ import {
 } from "./components";
 import { CATEGORY, SEARCH } from "./components/atom/Atom";
 import { FooterContainer } from "./components/footer/Footer";
-import Profile from "./Profile/Profile"
+import Profile from "./components/Profile/Profile"
 
 const App = () => {
   const [products, setProducts] = useState([]);
