@@ -14,6 +14,7 @@ import {
 } from "./components";
 import { CATEGORY, SEARCH } from "./components/atom/Atom";
 import { FooterContainer } from "./components/footer/Footer";
+import Profile from "./Profile/Profile"
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -164,6 +165,10 @@ const App = () => {
           <Route exact path="/checkout">
             <Checkout cartItems={cartItems} />
           </Route>
+          <Route exact path="/Profile">
+            <Profile />
+          </Route>
+
         </Switch>
 
         <Switch>

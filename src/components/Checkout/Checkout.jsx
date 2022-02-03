@@ -22,10 +22,12 @@ const steps = ["Shipping adress", "Payment details"];
 
 function Checkout(props) {
   const { cartItems } = props;
+  console.log(cartItems)
   const [activeStep, setActiveStep] = useState(0);
   const classes = useStyles();
   const [shippingData, setShippingData] = useState({});
-  const deleteCart= ()=> {
+  const addOrder= ()=> {
+
     localStorage.removeItem("quantity");
   }
 
@@ -37,7 +39,7 @@ function Checkout(props) {
         <Typography variant="subtitle2"></Typography>
       </div>
       <br />
-      <Button component={Link} to="/" onClick= {deleteCart()} variant="outlined" type="button">
+      <Button component={Link} to="/" onClick= {addOrder()} variant="outlined" type="button">
         Back to Home
       </Button>
     </>
@@ -64,6 +66,8 @@ function Checkout(props) {
     );
 
     const [loggedIn, setLoggedIn] = useAtom(LOGGEDIN)
+
+    
 
 //   useEffect(() => {
 //     console.log("proba")
