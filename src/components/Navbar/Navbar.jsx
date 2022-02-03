@@ -17,6 +17,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { useHistory } from "react-router-dom"
 import { atom, useAtom } from "jotai";
 import { LOGGEDIN, MODALL } from "../atom/Atom";
+import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 
 
 
@@ -139,6 +140,12 @@ function Navbar(props) {
           }
           {!verifyIfTokenIsExpired() && <div onClick={handleOpenModal} className={classes.loginButton}> 
             <LoginIcon />
+          </div> }
+
+          { verifyIfTokenIsExpired() && <div component={Link} to="/Profile">
+          <IconButton  component={Link} to="/Profile" aria-label="Show cart items" color="inherit">
+            <AccountCircleRoundedIcon   />
+            </IconButton>
           </div> }
           { verifyIfTokenIsExpired() && <div className={classes.logoutButton}>
             <LogoutIcon onClick = {LogOut}/>
