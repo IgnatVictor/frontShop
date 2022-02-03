@@ -1,6 +1,6 @@
 import { Button, Container, Grid, Typography } from "@material-ui/core";
 import { useAtom } from "jotai";
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { LOGGEDIN, MODALL } from "../atom/Atom";
 import Cartitem from "./CartItem/Cartitem";
@@ -8,10 +8,12 @@ import useStyles from "./styles";
 
 const Cart = (props) => {
   const { cartItems, onAdd, onRemove, onRemoveProduct, onEmptyCart } = props;
-  const [loggedIn, setLoggedIn] = useAtom(LOGGEDIN);
   const [open, setOpen] = useAtom(MODALL);
   const classes = useStyles();
   const isEmpty = !cartItems?.length;
+
+
+  console.log(localStorage.getItem('user'))
 
   let subtotal = 0;
   let subtotal1 = cartItems?.forEach((element) => {
@@ -51,7 +53,7 @@ const Cart = (props) => {
           >
             Empty Cart
           </Button>
-          {loggedIn && (
+          {!(localStorage.getItem('user')=== null) && (
             <Button
               component={Link}
               to="/checkout"
@@ -64,7 +66,7 @@ const Cart = (props) => {
               Checkout
             </Button>
           )}
-          {!loggedIn && (
+          {localStorage.getItem('user')===null && (
             <Button
               onClick={() => {
                 setOpen(true);
