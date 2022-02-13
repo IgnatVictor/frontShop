@@ -37,6 +37,7 @@ function Navbar(props) {
   
   const url = "https://webshopelectro.herokuapp.com/api/auth/signin";
   const urlRegister= "https://webshopelectro.herokuapp.com/api/auth/signup";
+  const urlProfile= "https://webshopelectro.herokuapp.com/api/profile/changeProfile"
   let [count2, setCount2] =useState(0);
   const roles= ["ROLE_USER"];
   
@@ -66,13 +67,20 @@ function Navbar(props) {
   const handleOpenModalRegister = () => setOpenRegister(true);
   
   const register= ()=> {
-    console.log(updatePassword)
     if(password === passwordRetype) {
       axios
-        .post(urlRegister,{username,email,password,roles     })
+        .post(urlRegister,{username,email,password,roles})
+        
         .then(()=> {
           handleCloseModalRegister();
-          
+          axios.post(url,{username,password})
+          .then((response)=>{
+            var userId = JSON.stringify(response.data.id);
+              axios.post(urlProfile,{username :username,
+                email: email,
+                userId: JSON.stringify(response.data.id)})
+          })
+
         })
     } else {
       setAlert(true);
@@ -89,11 +97,13 @@ function Navbar(props) {
         localStorage.setItem("user", JSON.stringify(response.data.username));
         localStorage.setItem("token",JSON.stringify(response.data.accessToken));
         localStorage.setItem("id",JSON.stringify(response.data.id));
+        
         setLogged(true);
         handleCloseModal();
         
         
       });
+      
 
     if (localStorage.getItem("user") === "") {
       setAlert(true);
