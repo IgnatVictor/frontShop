@@ -48,7 +48,7 @@ function Profile() {
         pictureLink: pictureLink,
       })
       .then(() => {
-        
+        window.location.href = "https://webshopfront.herokuapp.com/Profile"
       });
   }
 
