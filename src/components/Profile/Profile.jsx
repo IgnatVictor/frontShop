@@ -65,7 +65,7 @@ function Profile() {
       .then((response) => {
         console.log(response.data)
         setProfile(response.data);
-        window.location.href = "https://webshopfront.herokuapp.com/Profile"
+        
       });
   };
 
