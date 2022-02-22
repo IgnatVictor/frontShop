@@ -16,7 +16,7 @@ function Profile() {
   const [email, setEmail] = useState("");
   const [country, setCountry] = useState("");
   const urlModififyProfile = "https://webshopelectro.herokuapp.com/api/profile/changeProfile";
-  const urlGetUserProfile = "https://webshopfront.herokuapp.com/api/profile/getProfile";
+  const urlGetUserProfile = "https://webshopelectro.herokuapp.com/api/profile/getProfile";
   const [profile, setProfile] = useState([]);
   const id = localStorage.getItem("id");
 
