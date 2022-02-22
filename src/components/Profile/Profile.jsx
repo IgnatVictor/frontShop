@@ -1,8 +1,75 @@
-import React from "react";
+import React, { useState } from "react";
 import "./profile.css";
+import axios from "axios";
+import { useEffect } from "react";
 
 function Profile() {
-  const getUserDetails = () => {};
+  const [firstName, setFirstName] = useState("");
+  const [sunName, setSunName] = useState("");
+  const [phoneNumber, setPhonNumber] = useState("");
+  const [adress1, setAdress1] = useState("");
+  const [adress2, setAdress2] = useState("");
+  const [postcode, setPostCode] = useState("");
+  const [state, setState] = useState("");
+  const [pictureLink, setPictureLink] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [country, setCountry] = useState("");
+  const urlModififyProfile = "https://webshopfront.herokuapp.com/api/profile/changeProfile";
+  const urlGetUserProfile = "https://webshopfront.herokuapp.com/api/profile/getProfile";
+  const [profile, setProfile] = useState([]);
+  const id = localStorage.getItem("id");
+
+  const updateFirstName = (e) => setFirstName(e.target.value);
+  const updateSurName = (e) => setSunName(e.target.value);
+  const updatePhoneNumber = (e) => setPhonNumber(e.target.value);
+  const updateAdress1 = (e) => setAdress1(e.target.value);
+  const updateAdress2 = (e) => setAdress2(e.target.value);
+  const updatePostcode = (e) => setPostCode(e.target.value);
+  const updateEmail = (e) => setEmail(e.target.value);
+  const updateUserName = (e) => setUsername(e.target.value);
+  const updateCountry = (e) => setCountry(e.target.value);
+  const updateState = (e) => setState(e.target.value);
+
+  function changeProfile() {
+    axios
+      .post(urlModififyProfile, {
+        userId: profile.userId,
+        username: username,
+        sunName: sunName,
+        name: firstName,
+        adress1: adress1,
+        adress2: adress2,
+        phoneNumber: phoneNumber,
+        state: state,
+        country: country,
+        email: email,
+        postcode: postcode,
+        pictureLink: pictureLink,
+      })
+      .then(() => {
+        
+      });
+  }
+
+  useEffect(() => {
+    getUserProfile();
+  }, []);
+
+  
+
+  const getUserProfile = () => {
+    var userId = localStorage.getItem("id");
+    axios
+      .post(urlGetUserProfile, null, { params: { userId: userId } })
+      .then((response) => {
+        console.log(response.data)
+        setProfile(response.data);
+        window.location.href = "https://webshopfront.herokuapp.com/Profile"
+      });
+  };
+
+ 
 
   return (
     <div class="container rounded bg-white mt-5 mb-5">
@@ -16,8 +83,12 @@ function Profile() {
               class="rounded-circle mt-5"
               width="150px"
             />
-            <span class="font-weight-bold">Edogaru</span>
-            <span class="text-black-50">edogaru@mail.com.my</span>
+            <span class="font-weight-bold">
+              {profile.username ? profile.username : "username...."}
+            </span>
+            <span class="font-weight-bold">
+              {profile.email ? profile.email : "email...."}
+            </span>
             <span> </span>
           </div>
         </div>
@@ -28,111 +99,136 @@ function Profile() {
             </div>
             <div class="row mt-2">
               <div class="col-md-6">
-                <label class="labels">Name</label>
+                <label class="labels">
+                  {profile.name ? profile.name : "FirstName"}
+                </label>
                 <input
+                  onChange={updateFirstName}
                   type="text"
                   class="form-control"
-                  placeholder="first name"
-                  value=""
+                  placeholder="update first name..."
+                  value={firstName}
                 />
               </div>
               <div class="col-md-6">
-                <label class="labels">Surname</label>
+                <label class="labels">
+                  {profile.sunName ? profile.sunName : "SurName"}
+                </label>
                 <input
+                  onChange={updateSurName}
                   type="text"
                   class="form-control"
-                  value=""
-                  placeholder="surname"
+                  placeholder="update surName..."
+                  value={sunName}
                 />
               </div>
             </div>
             <div class="row mt-3">
               <div class="col-md-12">
-                <label class="labels">Mobile Number</label>
+                <label class="labels">
+                  {profile.phoneNumber ? profile.phoneNumber : "phoneNumber"}
+                </label>
                 <input
+                  onChange={updatePhoneNumber}
                   type="text"
                   class="form-control"
-                  placeholder="enter phone number"
-                  value=""
+                  placeholder="update phone number..."
+                  value={phoneNumber}
                 />
               </div>
               <div class="col-md-12">
-                <label class="labels">Address Line 1</label>
+                <label class="labels">
+                  {profile.adress1 ? profile.adress1 : "Address Line 1"}
+                </label>
                 <input
+                  onChange={updateAdress1}
                   type="text"
                   class="form-control"
-                  placeholder="enter address line 1"
-                  value=""
+                  placeholder="Update address line 1..."
+                  value={adress1}
                 />
               </div>
               <div class="col-md-12">
-                <label class="labels">Address Line 2</label>
+                <label class="labels">
+                  {profile.adress2 ? profile.adress2 : "Address Line 2"}
+                </label>
                 <input
+                  onChange={updateAdress2}
                   type="text"
                   class="form-control"
-                  placeholder="enter address line 2"
-                  value=""
+                  placeholder="Update address line 2..."
+                  value={adress2}
                 />
               </div>
               <div class="col-md-12">
-                <label class="labels">Postcode</label>
+                <label class="labels">
+                  {profile.postcode ? profile.postcode : "Postcode"}
+                </label>
                 <input
+                  onChange={updatePostcode}
                   type="text"
                   class="form-control"
-                  placeholder="enter address line 2"
-                  value=""
+                  placeholder="Update postcode..."
+                  value={postcode}
                 />
               </div>
               <div class="col-md-12">
-                <label class="labels">State</label>
+                <label class="labels">
+                  {profile.username ? profile.username : "Username"}
+                </label>
                 <input
+                  onChange={updateUserName}
                   type="text"
                   class="form-control"
-                  placeholder="enter address line 2"
-                  value=""
+                  placeholder="Update username..."
+                  value={username}
                 />
               </div>
               <div class="col-md-12">
-                <label class="labels">Username</label>
+                <label class="labels">
+                  {profile.email ? profile.email : "Email"}{" "}
+                </label>
                 <input
+                  onChange={updateEmail}
                   type="text"
                   class="form-control"
-                  placeholder="enter username"
-                  value=""
-                />
-              </div>
-              <div class="col-md-12">
-                <label class="labels">Email </label>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="enter email "
-                  value=""
+                  placeholder="Update email... "
+                  value={email}
                 />
               </div>
             </div>
             <div class="row mt-3">
               <div class="col-md-6">
-                <label class="labels">Country</label>
+                <label class="labels">
+                  {profile.country ? profile.country : "Country"}{" "}
+                </label>
                 <input
+                  onChange={updateCountry}
                   type="text"
                   class="form-control"
-                  placeholder="country"
-                  value=""
+                  placeholder="Update country..."
+                  value={country}
                 />
               </div>
               <div class="col-md-6">
-                <label class="labels">State/Region</label>
+                <label class="labels">
+                  {profile.state ? profile.state : "State/Region"}
+                </label>
                 <input
+                  onChange={updateState}
                   type="text"
                   class="form-control"
-                  value=""
-                  placeholder="state"
+                  value={state}
+                  placeholder="Update state..."
                 />
               </div>
             </div>
             <div class="mt-5 text-center">
-              <button class="btn btn-primary profile-button" type="button">
+              <button
+                onClick={changeProfile}
+                class="btn btn-primary profile-button"
+                type="button"
+              >
                 Save Profile
               </button>
             </div>
