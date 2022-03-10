@@ -21,10 +21,9 @@ function Profile() {
   const urlGetUserProfile =
     "https://webshopelectro.herokuapp.com/api/profile/getProfile";
   const urlOrders =
-    "https://webshopelectro.herokuapp.com/api/order/getOrders";
-  const [profile, setProfile] = useState([]);
-  const id = localStorage.getItem("id");
+    "http://localhost:8080/api/order/getOrders";
 
+  const [profile, setProfile] = useState([]);
   const updateFirstName = (e) => setFirstName(e.target.value);
   const updateSurName = (e) => setSunName(e.target.value);
   const updatePhoneNumber = (e) => setPhonNumber(e.target.value);
@@ -35,20 +34,20 @@ function Profile() {
   const updateUserName = (e) => setUsername(e.target.value);
   const updateCountry = (e) => setCountry(e.target.value);
   const updateState = (e) => setState(e.target.value);
-  const [orders, setOrders] = useState();
+  const [orders, setOrders] = useState([]);
 
-  var userId = localStorage.getItem("id");
+  const userId = localStorage.getItem("id");
 
  
-  const getOrders =()=> {
-  axios
-    .post(urlOrders, {headers: { 'Content-Type': 'application/json'}}, { params: { userId: userId } })
-    .then((response) => {
-      
-      setOrders(response.data);
-    }); }
+const getOrders= ()=> {
+    axios
+      .post(urlOrders, {headers: { 'Content-Type': 'application/json'}}, { params: { userId: userId } })
+      .then((response) => {
+       
+        setOrders(response.data);
+      });}
 
-  console.log(orders);
+      console.log(orders)
 
   function changeProfile() {
     axios
@@ -74,6 +73,7 @@ function Profile() {
   useEffect(() => {
     getUserProfile();
     getOrders();
+    
   }, []);
 
   const getUserProfile = () => {
