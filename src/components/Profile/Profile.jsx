@@ -4,6 +4,7 @@ import axios from "axios";
 import { useEffect } from "react";
 
 function Profile() {
+
   const [firstName, setFirstName] = useState("");
   const [sunName, setSunName] = useState("");
   const [phoneNumber, setPhonNumber] = useState("");
@@ -15,8 +16,12 @@ function Profile() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [country, setCountry] = useState("");
-  const urlModififyProfile = "https://webshopelectro.herokuapp.com/api/profile/changeProfile";
-  const urlGetUserProfile = "https://webshopelectro.herokuapp.com/api/profile/getProfile";
+  const urlModififyProfile =
+    "https://webshopelectro.herokuapp.com/api/profile/changeProfile";
+  const urlGetUserProfile =
+    "https://webshopelectro.herokuapp.com/api/profile/getProfile";
+  const urlOrders =
+    "https://webshopelectro.herokuapp.com/api/order/getOrders";
   const [profile, setProfile] = useState([]);
   const id = localStorage.getItem("id");
 
@@ -30,6 +35,20 @@ function Profile() {
   const updateUserName = (e) => setUsername(e.target.value);
   const updateCountry = (e) => setCountry(e.target.value);
   const updateState = (e) => setState(e.target.value);
+  const [orders, setOrders] = useState();
+
+  var userId = localStorage.getItem("id");
+
+ 
+  const getOrders =()=> {
+  axios
+    .post(urlOrders, {headers: { 'Content-Type': 'application/json'}}, { params: { userId: userId } })
+    .then((response) => {
+      
+      setOrders(response.data);
+    }); }
+
+  console.log(orders);
 
   function changeProfile() {
     axios
@@ -48,28 +67,23 @@ function Profile() {
         pictureLink: pictureLink,
       })
       .then(() => {
-        window.location.href = "https://webshopfront.herokuapp.com/Profile"
+        window.location.href = "https://webshopfront.herokuapp.com/Profile";
       });
   }
 
   useEffect(() => {
     getUserProfile();
+    getOrders();
   }, []);
-
-  
 
   const getUserProfile = () => {
     var userId = localStorage.getItem("id");
     axios
       .post(urlGetUserProfile, null, { params: { userId: userId } })
       .then((response) => {
-        console.log(response.data)
         setProfile(response.data);
-        
       });
   };
-
- 
 
   return (
     <div class="container rounded bg-white mt-5 mb-5">
@@ -241,12 +255,13 @@ function Profile() {
               <span class="border px-3 p-1 add-experience"></span>
             </div>
             <br />
-            <div class="col-md-12">
-              <label class="labels">Order1</label>
-            </div>
-            <div class="col-md-12">
-              <label class="labels">Order2</label>
-            </div>
+            {orders.map((order) => (
+                <div class="col-md-12">
+                <label class="labels">Order ID: {order.order_id}</label> <br/>
+             
+              </div>
+            ))}
+            
           </div>
         </div>
       </div>

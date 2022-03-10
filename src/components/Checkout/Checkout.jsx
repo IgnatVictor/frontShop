@@ -11,6 +11,7 @@ import {
   Button,
   CssBaseline,
 } from "@material-ui/core";
+import axios from "axios";
 import useStyles from "./styles";
 import AdressForm from "./AdressForm";
 import PaymentForm from "./PaymentForm";
@@ -18,18 +19,36 @@ import { Link } from "react-router-dom";
 import verifyIfTokenIsExpired from "../Services/UserCheck";
 import { LOGGEDIN } from "../atom/Atom";
 import { useAtom } from "jotai";
+import { SUM } from "../atom/Atom";
 const steps = ["Shipping adress", "Payment details"];
 
 function Checkout(props) {
+  const sum = useAtom(SUM);
+  const urlOrder = "https://webshopelectro.herokuapp.com/api/order/add";
   const { cartItems } = props;
-  console.log(cartItems)
+  let subtotal = 0;
+  cartItems?.forEach((element) => {
+    subtotal = subtotal + element.qty * element.price;
+  });
+  
   const [activeStep, setActiveStep] = useState(0);
   const classes = useStyles();
   const [shippingData, setShippingData] = useState({});
-  const addOrder= ()=> {
+  const addOrder = () => {
+    var userId = parseInt(localStorage.getItem("id"));
+    
+    axios.post(
+      urlOrder,
+      JSON.stringify({ orderItems: cartItems, totalSum: subtotal, userId: userId  }),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     localStorage.removeItem("quantity");
-  }
+  };
 
   const Confirmation = () => (
     <>
@@ -39,7 +58,13 @@ function Checkout(props) {
         <Typography variant="subtitle2"></Typography>
       </div>
       <br />
-      <Button component={Link} to="/" onClick= {addOrder()} variant="outlined" type="button">
+      <Button
+        component={Link}
+        to="/"
+        onClick={addOrder()}
+        variant="outlined"
+        type="button"
+      >
         Back to Home
       </Button>
     </>
@@ -60,46 +85,37 @@ function Checkout(props) {
         shippingData={shippingData}
         cartItems={cartItems}
         backStep={backStep}
-        shippingData={shippingData}
         nextStep={nextStep}
       />
     );
 
-    const [loggedIn, setLoggedIn] = useAtom(LOGGEDIN)
+  const [loggedIn, setLoggedIn] = useAtom(LOGGEDIN);
 
-    
+  //   useEffect(() => {
+  //     console.log("proba")
+  //   }, [verifyIfTokenIsExpired()]);
 
-//   useEffect(() => {
-//     console.log("proba")
-//   }, [verifyIfTokenIsExpired()]);
-
-  
-    
-       
-      return ( 
-        <>
-          <CssBaseline />
-          <div className={classes.toolbar} />
-          <main className={classes.layout}>
-            <Paper className={classes.paper}>
-              <Typography variant="h4" align="center">
-                Checkout
-              </Typography>
-              <Stepper activeStep={activeStep} className={classes.stepper}>
-                {steps.map((step) => (
-                  <Step key={step}>
-                    <StepLabel>{step}</StepLabel>
-                  </Step>
-                ))}
-              </Stepper>
-              {activeStep === steps.length ? <Confirmation /> : <Form />}
-            </Paper>
-          </main> 
-          
-         
-        </> )
-      
-   
+  return (
+    <>
+      <CssBaseline />
+      <div className={classes.toolbar} />
+      <main className={classes.layout}>
+        <Paper className={classes.paper}>
+          <Typography variant="h4" align="center">
+            Checkout
+          </Typography>
+          <Stepper activeStep={activeStep} className={classes.stepper}>
+            {steps.map((step) => (
+              <Step key={step}>
+                <StepLabel>{step}</StepLabel>
+              </Step>
+            ))}
+          </Stepper>
+          {activeStep === steps.length ? <Confirmation /> : <Form />}
+        </Paper>
+      </main>
+    </>
+  );
 }
 
 export default Checkout;
