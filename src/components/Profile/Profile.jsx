@@ -21,7 +21,7 @@ function Profile() {
   const urlGetUserProfile =
     "https://webshopelectro.herokuapp.com/api/profile/getProfile";
   const urlOrders =
-    "http://localhost:8080/api/order/getOrders";
+    "https://webshopelectro.herokuapp.com/api/order/getOrders";
 
   const [profile, setProfile] = useState([]);
   const updateFirstName = (e) => setFirstName(e.target.value);
