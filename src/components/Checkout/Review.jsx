@@ -1,14 +1,13 @@
 import React from "react";
 import { Typography, List, ListItem, ListItemText } from "@material-ui/core";
 import { Products } from "..";
-import { useAtom } from "jotai";
-import {SUM} from "../atom/Atom"
+
 
 const Review = (props) => {
   const { cartItems } = props;
   let subtotal =0;
   
-  const [Sum,setSum] = useAtom(SUM)
+  
   
   
   
