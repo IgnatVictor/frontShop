@@ -14,6 +14,7 @@ import {
 } from "./components";
 import { CATEGORY, SEARCH } from "./components/atom/Atom";
 import { FooterContainer } from "./components/footer/Footer";
+import OrderItems from "./components/Profile/OrderItems";
 import Profile from "./components/Profile/Profile"
 
 const App = () => {
@@ -78,9 +79,7 @@ const App = () => {
           x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
         )
       );
-      // localStorage.setItem("cartItems",JSON.stringify(cartItems))
-
-      // JSON.parse(localStorage.getItem("cartItems"))
+    
     } else {
       setCartItems([...cartItems, { ...product, qty: 1 }]);
     }
@@ -147,6 +146,7 @@ const App = () => {
         </Route>
 
         <Switch>
+          <Route exact path="/order" component= {OrderItems}/>
           <Route exact path="/item" component={Item} />
           <Route exact path="/">
             <Products onAdd={onAdd} products={products} />
