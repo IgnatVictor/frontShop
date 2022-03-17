@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import "./profile.css";
 import axios from "axios";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 function Profile() {
-
   const [firstName, setFirstName] = useState("");
   const [sunName, setSunName] = useState("");
   const [phoneNumber, setPhonNumber] = useState("");
@@ -20,8 +21,7 @@ function Profile() {
     "https://webshopelectro.herokuapp.com/api/profile/changeProfile";
   const urlGetUserProfile =
     "https://webshopelectro.herokuapp.com/api/profile/getProfile";
-  const urlOrders =
-    "https://webshopelectro.herokuapp.com/api/order/getOrders";
+  const urlOrders = "https://webshopelectro.herokuapp.com/api/order/getOrders";
 
   const [profile, setProfile] = useState([]);
   const updateFirstName = (e) => setFirstName(e.target.value);
@@ -38,16 +38,17 @@ function Profile() {
 
   const userId = localStorage.getItem("id");
 
- 
-const getOrders= ()=> {
+  const getOrders = () => {
     axios
-      .post(urlOrders, {headers: { 'Content-Type': 'application/json'}}, { params: { userId: userId } })
+      .post(
+        urlOrders,
+        { headers: { "Content-Type": "application/json" } },
+        { params: { userId: userId } }
+      )
       .then((response) => {
-       
         setOrders(response.data);
-      });}
-
-      console.log(orders)
+      });
+  };
 
   function changeProfile() {
     axios
@@ -73,9 +74,9 @@ const getOrders= ()=> {
   useEffect(() => {
     getUserProfile();
     getOrders();
-    
   }, []);
 
+    console.log(orders)
   const getUserProfile = () => {
     var userId = localStorage.getItem("id");
     axios
@@ -253,16 +254,26 @@ const getOrders= ()=> {
             <div class="d-flex justify-content-between align-items-center experience">
               <span>My orders</span>
               <span class="border px-3 p-1 add-experience"></span>
+              
             </div>
-            <br />
+            <br /> 
+           
+            <div>
             {orders.map((order) => (
-                <div class="col-md-12">
-                <label class="labels">Order ID: {order.order_id}</label> <br/>
-             
-              </div>
-            ))}
-            
-          </div>
+              
+              <Link to={{
+                pathname:'/order', state : order
+              }} >
+              <div class="col-md-12">
+                <label class="labels">
+                  <Button>
+                  Order ID: {order.order_id} Date : {order.localDate}
+                  </Button>
+                </label>{" "}
+                <br />
+              </div> </Link>
+            ))} </div> 
+          </div> 
         </div>
       </div>
     </div>

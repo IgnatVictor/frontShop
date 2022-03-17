@@ -2,10 +2,12 @@
 import React from "react";
 import Slider from "react-slick";
 import useStyles from "./styles";
-
+import { CATEGORY } from "../atom/Atom";
+import { useAtom } from "jotai";
 
 function Responsive() {
   const classes = useStyles();
+  const [category, setCategory] = useAtom(CATEGORY);
   
   
   var settings = {
@@ -53,50 +55,50 @@ function Responsive() {
       <br />
 
       <Slider {...settings}>
-        <div>
-          <img 
+        <div >
+          <img onClick={()=> setCategory("Pc")}
             className={classes.image} alt=""
             src="https://i.ibb.co/5Gp9HMw/computers.png"
           />
         </div>
         <div>
-          <img
+          <img onClick={()=> setCategory("Tablets")}
             className={classes.image} alt=""
             src="https://i.ibb.co/rfbSbbM/tv.png"
           />
         </div>
         <div>
-          <img alt=""
+          <img onClick={()=> setCategory("Bars")} alt=""
             className={classes.image}
             src="https://i.ibb.co/jwyQQmd/cell.png"
           />
         </div>
         <div>
-          <img alt=""
+          <img onClick={()=> setCategory("Mouse")} alt=""
             className={classes.image}
             src="https://i.ibb.co/5nF74Dy/photo.png"
           />
         </div>
         <div>
-          <img alt=""
+          <img onClick={()=> setCategory("Led")} alt=""
             className={classes.image}
             src="https://i.ibb.co/4PvXqyF/headph.png"
           />
         </div>
         <div>
-          <img alt=""
+          <img onClick={()=> setCategory("Pc")} alt=""
             className={classes.image}
             src="https://i.ibb.co/wYbbQgf/office-elec.png"
           />
         </div>
         <div>
-          <img alt=""
+          <img onClick={()=> setCategory("Pads")} alt=""
             className={classes.image}
             src="https://i.ibb.co/0KT0nTq/smarthome.png"
           />
         </div>
         <div>
-          <img alt=""
+          <img onClick={()=> setCategory("Pc")} alt=""
             className={classes.image}
             src="https://i.ibb.co/5nF74Dy/photo.png"
           />

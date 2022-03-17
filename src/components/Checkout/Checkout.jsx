@@ -23,7 +23,7 @@ import { SUM } from "../atom/Atom";
 const steps = ["Shipping adress", "Payment details"];
 
 function Checkout(props) {
-  const sum = useAtom(SUM);
+  
   const urlOrder = "https://webshopelectro.herokuapp.com/api/order/add";
   const { cartItems } = props;
   let subtotal = 0;
