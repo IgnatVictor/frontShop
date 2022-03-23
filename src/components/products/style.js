@@ -2,14 +2,14 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles(() => ({
   root: {
-    width: '100%',
+    width: '80%',
     "@media (max-width: 600px)": {
-      width: "100%",
+      width: "90%",
       
     }
     
   },
-  proba: {
+  item: {
     overflow: "hidden",
     display: "-webkit-box",
     WebkitBoxOrient: "vertical",
@@ -23,7 +23,7 @@ export default makeStyles(() => ({
   },
   
 
-  proba1: {
+  item2: {
     overflow: "hidden",
     display: "-webkit-box",
     WebkitBoxOrient: "vertical",

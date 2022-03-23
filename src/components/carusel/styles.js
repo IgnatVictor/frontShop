@@ -15,18 +15,23 @@ export default makeStyles((theme) => ({
     paddingTop: '100%', // 16:9
   },
   carousell: {
-    boxShadow: "10px -10px 10px 10px rgba(1, 1, 1, 1)",
+    boxShadow: "10px -5px 10px 10px rgba(1, 1, 1, 1)",
     background: "#f7f7f7",
+    width: "97%" ,
+    "@media (max-width: 600px)": {
+      width: "93%",
+      
+    }
   },
   image: {
       
       border: "1px solid #ddd",
       borderRadius:" 40px",
       padding: "5px",
-      width: "150px",
+      width: "auto",
      
-      maxWidth: "150px",
-        height: "auto",
+      maxWidth: "140px",
+        height: "40%",
         display: "block",
         marginLeft: "auto",
         marginRight: "auto",
