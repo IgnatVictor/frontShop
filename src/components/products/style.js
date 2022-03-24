@@ -4,7 +4,7 @@ export default makeStyles(() => ({
   root: {
     width: '100%',
     "@media (max-width: 600px)": {
-      width: "90%",
+      width: "100%",
       
     }
     
