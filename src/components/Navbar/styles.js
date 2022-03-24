@@ -1,3 +1,4 @@
+import { Hidden } from '@material-ui/core';
 import { makeStyles, fade } from '@material-ui/core/styles';
 
 const drawerWidth = 0;
@@ -90,6 +91,7 @@ export default makeStyles((theme) => ({
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create('width'),
     width: '100%',
+    
     [theme.breakpoints.up('md')]: {
       width: '20ch',
     },
