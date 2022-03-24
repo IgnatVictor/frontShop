@@ -13,7 +13,7 @@ export default makeStyles(() => ({
     overflow: "hidden",
     display: "-webkit-box",
     WebkitBoxOrient: "vertical",
-    WebkitLineClamp:"3",
+    WebkitLineClamp:"2",
     
     
   },
