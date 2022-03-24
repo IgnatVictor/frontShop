@@ -31,7 +31,7 @@ function Product(props) {
       /></Link>
       <CardContent>
         <div className={classes.cardContent}>
-          <Typography className={classes.proba1} variant="h5" gutterBottom>
+          <Typography className={classes.item2} variant="h5" gutterBottom>
             {product.name}+ "   "
           </Typography>
           <Typography variant="h5">{product.price + "$"}</Typography>
@@ -42,7 +42,7 @@ function Product(props) {
           }} > <Typography
           variant="body2"
           color="textSecondary"
-          className={classes.proba}
+          className={classes.item}
         >
           {" "}
           {product.description} ...
