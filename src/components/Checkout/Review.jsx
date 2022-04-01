@@ -1,12 +1,14 @@
 import React from "react";
 import { Typography, List, ListItem, ListItemText } from "@material-ui/core";
-import { Products } from "..";
+
 
 
 const Review = (props) => {
   const { cartItems } = props;
   let subtotal =0;
-  
+  cartItems?.forEach((element) => {
+    subtotal = subtotal + element.qty * element.price;
+  });
   
   
   
@@ -25,7 +27,7 @@ const Review = (props) => {
               secondary={"Quantity and Price"}
             />
             <Typography variant="body2">
-              {product.price} X{product.qty}
+              {product.price}$ X{product.qty}
             </Typography>
           </ListItem>
         ))}
